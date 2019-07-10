@@ -13,11 +13,9 @@ External Python libraries needed to be preinstalled:
 Steps for running:
 - Download/clone the repository (this includes the data in the-movies-dataset folder)
 - Using your terminal, navigate to contents of the repository and execute command in the following syntax:
-
-python3 movie_genre_predictor.py --title <title> --description <description>
+- python3 movie_genre_predictor.py --title <title> --description <description>
 
 For example:
-
 python3 movie_genre_predictor.py --title "Avengers: Endgame" --description "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe."
 
 The output is in the following json format, with the predicted genre(s) at the bottom:
