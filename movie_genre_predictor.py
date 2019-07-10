@@ -1,9 +1,8 @@
 import re
-import csv
+import sys
 import nltk
 import json
 import argparse
-import numpy as np
 import pandas as pd
 
 from nltk.corpus import stopwords
@@ -114,20 +113,35 @@ class Output():
 
 
 # create an argument parser to input the title and description from command line in the required format
-parser=argparse.ArgumentParser()
-parser.add_argument('--title', help='the movie title', type= str)
-parser.add_argument('--description', help='the movie description', type= str)
-args=parser.parse_args()
+try:
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--title', help='the movie title', type= str)
+    parser.add_argument('--description', help='the movie description', type= str)
+    args=parser.parse_args()
+except:
+    print("Error in input format. Run command using this format:\npython3 movie_genre_predictor.py --title <title> --description <description>")
+    sys.exit()
 
 # create the predictor using the arguments passed
-mgp = MovieGenrePredictor()
-description = args.description
-description = mgp.clean_text(str(description))
-description_tfidf = mgp.tfidf_vectorizer.transform(pd.Series(description))
-output_genre_vector = mgp.classifier.predict(description_tfidf)
-output_genre = mgp.multilabel_binarizer.inverse_transform(output_genre_vector)
+try:
+    mgp = MovieGenrePredictor()
+    description = args.description
+    description = mgp.clean_text(str(description))
+    description_tfidf = mgp.tfidf_vectorizer.transform(pd.Series(description))
+    output_genre_vector = mgp.classifier.predict(description_tfidf)
+    output_genre = mgp.multilabel_binarizer.inverse_transform(output_genre_vector)
+except IOError:
+    print("Error occured on trying to read data file")
+    sys.exit()
+except:
+    print("Error occured during performing classification")
+    sys.exit()
 
 # create the object of Output class which is then dumped as json and printed as output.
-output = Output(args.title,args.description,output_genre)
-j = json.dumps(output.__dict__, indent = 4)
-print(j)
+try:
+    output = Output(args.title,args.description,output_genre[0])
+    j = json.dumps(output.__dict__, indent = 4)
+    print(j)
+except:
+    print("Error occurred during conversion of predicted target output to json format")
+    sys.exit()
