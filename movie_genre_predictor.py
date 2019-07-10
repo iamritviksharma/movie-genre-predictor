@@ -48,7 +48,7 @@ class MovieGenrePredictor():
         all_genres_df = pd.DataFrame({'Genre': list(all_genres.keys()), 
                                       'Count': list(all_genres.values())})
         
-        # remove genres which like 'Carousel Productions' and 'The Cartel' which have count less than 10 i.e. they are probably mistakes in the data
+        # remove genres like 'Carousel Productions' and 'The Cartel' which have count less than 10 i.e. they are probably mistakes in the data
         all_genres_df = all_genres_df[all_genres_df['Count'] > 10]
         all_genres = all_genres_df['Genre'].tolist()
 
