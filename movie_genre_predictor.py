@@ -118,6 +118,9 @@ try:
     parser.add_argument('--title', help='the movie title', type= str)
     parser.add_argument('--description', help='the movie description', type= str)
     args=parser.parse_args()
+    if(len(args.title)==0 or len(args.description)==0):
+        print("Both title and description are mandatory non-empty strings. Please re-run command with non-empty inputs.")
+        raise Exception
 except:
     print("Error in input format. Run command using this format:\npython3 movie_genre_predictor.py --title <title> --description <description>")
     sys.exit()
