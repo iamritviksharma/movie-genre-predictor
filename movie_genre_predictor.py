@@ -111,7 +111,6 @@ class Output():
         self.description = description
         self.genre = genre
 
-
 # create an argument parser to input the title and description from command line in the required format
 try:
     parser=argparse.ArgumentParser()
@@ -134,10 +133,10 @@ try:
     output_genre_vector = mgp.classifier.predict(description_tfidf)
     output_genre = mgp.multilabel_binarizer.inverse_transform(output_genre_vector)
 except IOError:
-    print("Error occured on trying to read data file")
+    print("Error occured on trying to read data file".)
     sys.exit()
 except:
-    print("Error occured during performing classification")
+    print("Error occured while performing classification.")
     sys.exit()
 
 # create the object of Output class which is then dumped as json and printed as output.
@@ -146,5 +145,5 @@ try:
     j = json.dumps(output.__dict__, indent = 4)
     print(j)
 except:
-    print("Error occurred during conversion of predicted target output to json format")
+    print("Error occurred during conversion of predicted target output to json format.")
     sys.exit()
