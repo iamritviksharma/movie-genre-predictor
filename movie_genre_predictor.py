@@ -133,7 +133,7 @@ try:
     output_genre_vector = mgp.classifier.predict(description_tfidf)
     output_genre = mgp.multilabel_binarizer.inverse_transform(output_genre_vector)
 except IOError:
-    print("Error occured on trying to read data file".)
+    print("Error occured on trying to read data file.")
     sys.exit()
 except:
     print("Error occured while performing classification.")
