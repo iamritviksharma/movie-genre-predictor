@@ -1,11 +1,11 @@
 # movie-genre-predictor
-Predicts genre of a movie, given a description.
+Predicts genres of a movie, given a description.
+Uses MovieLens dataset (https://www.kaggle.com/rounakbanik/the-movies-dataset/#movies_metadata.csv) and creates a multi-label classifier.
 
 My Setup:
 - Python Version 3.7.3
 
 External Python libraries needed to be preinstalled:
-- 're' for regular expression matching needed in the text-cleaning step
 - 'nltk' for getting frequency distribution of words as well as getting common stopwords
 - 'pandas' for working with data frames
 - 'sklearn' for using classifiers, train_test_split, f1_score
@@ -27,5 +27,3 @@ The output is in the following json format, with the predicted genre(s) at the b
         "Science Fiction"
     ]
 }
-
-Note that I have taken the liberty to create a multi-label classifier which predicts potentially more than one genre for each input. This is because the suggested MovieLens dataset (https://www.kaggle.com/rounakbanik/the-movies-dataset/#movies_metadata.csv) often has movies with more than one genres.
