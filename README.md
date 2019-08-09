@@ -22,8 +22,8 @@ The output is in the following json format, with the predicted genre(s) at the b
 {  
     "title": "Avengers: Endgame",  
     "description": "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",  
-    "genre": [  
-        "Action",  
+    "genre": [
+        "Action",
         "Science Fiction"
     ]  
 }  
