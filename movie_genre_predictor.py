@@ -86,7 +86,7 @@ class MovieGenrePredictor():
         # make predictions for validation set
         y_pred = self.classifier.predict(xval_tfidf)
 
-        # evaluate performance (returns around 0.52 currently)
+        # evaluate performance
         # f1 = f1_score(yval, y_pred, average="micro")
         # print(f1)
 
